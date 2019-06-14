@@ -11,20 +11,23 @@ int comp(int *a, int *b)
 {
     if(*a < *b)
         return 1;
-    else if(a > b)
+    else if(*a > *b)
         return -1;
     else
-        return 3;
+        return 2;
 }
 
-int main(int argc, char *argv[]){
+void print(int *elem)
+{
+    printf("%i\n",*elem);
+}
 
-    TNo *tree = NULL; /* inicializar a arvore! */
+int main(){
+
+
+    TNo *tree = NULL;
     int *number;
-
-    argc = argc;
-    argv[1] = " [OK] ";
-    printf("%s\n",argv[1]);
+    int *lucky_number;
 
 
 
@@ -32,8 +35,55 @@ int main(int argc, char *argv[]){
     *number = 7;
     tree = insert_tree(tree,number,&comp);
 
-    free_elem(number);
-    free(tree);
+     number = (int*)malloc(sizeof(int));
+    *number = 2;
+    tree = insert_tree(tree,number,&comp);
+
+     number = (int*)malloc(sizeof(int));
+    *number = 9;
+    tree = insert_tree(tree,number,&comp);
+
+     number = (int*)malloc(sizeof(int));
+    *number = 8;
+    tree = insert_tree(tree,number,&comp);
+
+    number = (int*)malloc(sizeof(int));
+    *number = 1;
+    tree = insert_tree(tree,number,&comp);
+
+    number = (int*)malloc(sizeof(int));
+    *number = 3;
+    tree = insert_tree(tree,number,&comp);
+
+    number = (int*)malloc(sizeof(int));
+    *number = 10;
+    tree = insert_tree(tree,number,&comp);
+
+
+
+     lucky_number = (int*)malloc(sizeof(int));
+    *lucky_number = 9;
+
+
+
+    print_tree(tree, &print);
+
+    /* caso retorne um (void*)
+
+    printf("searched value = ");
+    print(search_tree(tree,lucky_number,&comp));
+    */
+
+    /* caso retorne um nó */
+    printf("searched subtree = ");
+    print_tree(search_tree(tree,lucky_number,&comp), &print);
+
+
+    printf("number of nodes = %i\n",count_node_tree(tree));
+
+    printf("height tree = %i\n",find_height_tree(tree));
+
 
     return 0;
 }
+

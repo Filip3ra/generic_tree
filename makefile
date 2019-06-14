@@ -9,7 +9,8 @@ main.o:	main.c	tree.h
 	gcc -o main.o -c main.c -W -Wall -ansi -pedantic -ggdb3	
 clean:
 	rm -rf *.o
-	rm -rf tree
+	rm -rf tree	
+	rm -rf prog
 exec:
 	valgrind ./prog
 
